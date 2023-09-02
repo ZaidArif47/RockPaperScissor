@@ -12,6 +12,7 @@
     userMove = 'Rock';
     systemMove();
     moveCompare();
+scoreGenerator();
     displayResult();
     ">Rock</button>
 
@@ -19,21 +20,34 @@
     userMove = 'Paper';
     systemMove();
     moveCompare();
-    displayResult();
+scoreGenerator();    
+displayResult();
     ">Paper</button>
 
     <button onclick="
     userMove = 'Scissor';
     systemMove();
     moveCompare();
+    scoreGenerator();
     displayResult();
     ">Scissor</button>
+
+	 <button id="reset" onclick="
+    resetScore();
+    ">Reset Score</button>
+
 
     <script>
         let RandomNumber;
         let compMove = '';
         let userMove = '';
         let result = '';
+
+	const score = {
+            Wins:0,
+            Loses:0,
+            Ties:0 
+        }
 
         function systemMove() {
         RandomNumber = Math.random();
@@ -90,6 +104,27 @@
        function displayResult() {
         alert(`Game ${result} as you chose ${userMove} and computer chose ${compMove}`);
        }
+
+	
+function scoreGenerator() {
+
+        if (result === 'Won') {
+            score.Wins++;
+        }
+        else if (result === 'Lose') {
+            score.Loses++;
+        }
+        else if (result === 'Drawn') {
+            score.Ties++;
+        }
+    } 
+
+    function resetScore() {
+       score.Wins=0;
+       score.Loses=0;
+       score.Ties=0;
+       alert(`Score was Reset! New Game Starts>>\nWins: ${score.Wins}, Loses: ${score.Loses}, Ties: ${score.Ties}`)
+    }
     
     </script>
 </body>
