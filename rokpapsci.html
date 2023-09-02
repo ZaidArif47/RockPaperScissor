@@ -3,56 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Game</title>
+    <title>RockPaperScissor</title>
 </head>
 <body>
-    <p>Rock Paper Scissors</p>
-   
+    <p>Rock Paper Scissor</p>
+
     <button onclick="
-     RandomNumber = Math.random();
-     //Math.random function generates a random number that belongs to [0,1)
-     //So we divide that into 3 parts each for Rock, Paper and Scissor.
-     if(RandomNumber <= 1/3) { 
-        alert('Match Drawn as Computer chose Rock');
-     } 
-     else if(RandomNumber > 1/3  && RandomNumber < 2/3) {
-        alert('You Lose as Computer chose Paper');
-     }
-     else {
-        alert('You Win as Computer chose Scissor');
-     }
-     console.log(RandomNumber);
+    userMove = 'Rock';
+    systemMove();
+    moveCompare();
+    displayResult();
     ">Rock</button>
 
-
     <button onclick="
-     RandomNumber = Math.random();
-     if(RandomNumber <= 1/3) {
-        alert('You Win as Computer chose Rock');
-     } 
-     else if(RandomNumber > 1/3  && RandomNumber < 2/3) {
-        alert('Match Drawn as Computer chose Paper');
-     }
-     else {
-        alert('You Lose as Computer chose Scissor');
-     }
-     console.log(RandomNumber);
+    userMove = 'Paper';
+    systemMove();
+    moveCompare();
+    displayResult();
     ">Paper</button>
 
-
     <button onclick="
-    let RandomNumber = Math.random();
-    if(RandomNumber <= 1/3) {
-        alert('You Lose as Computer chose Rock');
-     } 
-     else if(RandomNumber > 1/3  && RandomNumber < 2/3) {
-        alert('You Win as Computer chose Paper');
-     }
-     else {
-        alert('Match Drawn as Computer chose Scissor');
-     }
-     console.log(RandomNumber);
+    userMove = 'Scissor';
+    systemMove();
+    moveCompare();
+    displayResult();
     ">Scissor</button>
 
+    <script>
+        let RandomNumber;
+        let compMove = '';
+        let userMove = '';
+        let result = '';
+
+        function systemMove() {
+        RandomNumber = Math.random();
+        if(RandomNumber <= 1/3) { 
+        compMove = 'Rock';
+        } 
+        else if(RandomNumber > 1/3  && RandomNumber < 2/3) {
+            compMove = 'Paper';
+        }
+        else {
+            compMove = 'Scissor';
+        }
+      }
+
+       function moveCompare() {
+        if(userMove === 'Rock')
+        {
+            if(compMove === 'Rock') {
+                result = 'Drawn';
+            }
+            else if(compMove === 'Paper'){
+                result = 'Lost';
+            }
+            else {
+                result = 'Won';
+            }
+        }
+        else if(userMove === 'Paper')
+        {
+            if(compMove === 'Rock') {
+                result = 'Won';
+            }
+            else if(compMove === 'Paper'){
+                result = 'Drawn';
+            }
+            else {
+                result ='Lose';
+            }
+        }
+        else
+        {
+            if(compMove === 'Rock') {
+                result ='Lose';
+            }
+            else if(compMove === 'Paper'){
+                result ='Won';
+            }
+            else {
+                result = 'Drawn';
+            }
+        }
+       }
+
+       function displayResult() {
+        alert(`Game ${result} as you chose ${userMove} and computer chose ${compMove}`);
+       }
+    
+    </script>
 </body>
-</html>
+</html> 
