@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissor2</title>
+</head>
+
+<body>
+    <p>Rock Paper Scissor 2</p>
+
+    <button onclick="
+    userMove = 'Rock';
+    systemMove();
+    moveCompare();
+    scoreGenerator();
+    displayResult();
+    ">Rock</button>
+
+    <button onclick="
+    userMove = 'Paper';
+    systemMove();
+    moveCompare();
+    scoreGenerator();
+    displayResult();
+    ">Paper</button>
+
+    <button onclick="
+    userMove = 'Scissor';
+    systemMove();
+    moveCompare();
+    scoreGenerator();
+    displayResult();
+    ">Scissor</button>
+
+    <button id="reset" onclick="
+    resetScore();
+    localStorage.removeItem('savedScore')
+    ">Reset Score</button>
+
+    <script>
+        let RandomNumber;
+        let compMove = '';
+        let userMove = '';
+        let result = '';
+
+        /*This is very important>>
+        We are getting the scoreZ value from localStorage after converting it back to Object
+        */
+       // We are giving score a default value when we reset and remove score from localStorage
+       //To do this we use the truthy operator.
+        let scoreZ = JSON.parse(localStorage.getItem('savedScore')) || {
+            Wins:0,
+            Loses:0,
+            Ties:0
+        }
+
+        /* We can use this s=also instead of using the truthy operator above
+        if (scoreZ===null) {    //(!scoreZ) instead of (scoreZ===null)
+            scoreZ = {
+            Wins:0,
+            Loses:0,
+            Ties:0
+            }
+        }
+        */
+
+        console.log(JSON.parse(localStorage.getItem('savedScore')));
+
+        function systemMove() {
+        RandomNumber = Math.random();
+        if(RandomNumber <= 1/3) { 
+        compMove = 'Rock';
+        } 
+        else if(RandomNumber > 1/3  && RandomNumber < 2/3) {
+            compMove = 'Paper';
+        }
+        else {
+            compMove = 'Scissor';
+        }
+      }
+
+       function moveCompare() {
+        if(userMove === 'Rock')
+        {
+            if(compMove === 'Rock') {
+                result = 'Drawn';
+            }
+            else if(compMove === 'Paper'){
+                result = 'Lose';
+            }
+            else {
+                result = 'Won';
+            }
+        }
+        else if(userMove === 'Paper')
+        {
+            if(compMove === 'Rock') {
+                result = 'Won';
+            }
+            else if(compMove === 'Paper'){
+                result = 'Drawn';
+            }
+            else {
+                result ='Lose';
+            }
+        }
+        else
+        {
+            if(compMove === 'Rock') {
+                result ='Lose';
+            }
+            else if(compMove === 'Paper'){
+                result ='Won';
+            }
+            else {
+                result = 'Drawn';
+            }
+        }
+       }
+
+
+       function scoreGenerator() {
+
+        if (result === 'Won') {
+            scoreZ.Wins++;
+        }
+        else if (result === 'Lose') {
+            scoreZ.Loses++;
+        }
+        else if (result === 'Drawn') {
+            scoreZ.Ties++;
+        }
+
+        //we are saving the score value in localStorage to make it persistent
+        localStorage.setItem('savedScore', JSON.stringify(scoreZ) )
+    } 
+
+    
+    function displayResult() {
+        alert(`Game ${result} as you chose ${userMove} and computer chose ${compMove}\nWins: ${scoreZ.Wins}, Loses: ${scoreZ.Loses}, Ties: ${scoreZ.Ties}`)
+    }
+
+    function resetScore() {
+       scoreZ.Wins=0;
+       scoreZ.Loses=0;
+       scoreZ.Ties=0;
+       alert(`Score was Reset! New Game Starts>>\nWins: ${scoreZ.Wins}, Loses: ${scoreZ.Loses}, Ties: ${scoreZ.Ties}`)
+    }
+    
+    </script>
+</body>
+</html>
