@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor 3</title>
+</head>
+<body>
+    <button onclick="
+     userMove = 'Rock';
+     gameRun();   
+    ">Rock</button>
+    
+    <button onclick="
+    userMove = 'Paper';
+    gameRun();
+    ">Paper</button>
+    
+    <button onclick="
+    userMove = 'Scissor';
+    gameRun();
+    ">Scissor</button>
+
+    <br>
+    
+    <p id="resultPara"></p>
+    <p id="scorePara"></p>
+
+    <button onclick="
+    score.wins = 0;
+    score.losses = 0;
+    score.draws = 0;
+    let scoreLine = document.getElementById('scorePara');
+    scoreLine.innerText = `Game was Reset!\nWins:${score.wins}, Loses:${score.losses}, Draws:${score.draws}`;
+    ">Reset Score</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
