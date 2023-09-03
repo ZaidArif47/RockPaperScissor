@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor 4</title>
+    <link rel="stylesheet" href="gameStyle.css">
+</head>
+<body>
+    <p class="title">Rock Paper Scissors</p>
+
+    <button class="choice" onclick="
+     userMove = 'Rock';
+     gameRun();   
+    "><img src="img/rock-emoji.png" alt=""></button>
+    
+    <button class="choice" onclick="
+    userMove = 'Paper';
+    gameRun();
+    "><img src="img/paper-emoji.png" alt=""></button>
+    
+    <button class="choice" onclick="
+    userMove = 'Scissor';
+    gameRun();
+    "><img src="img/scissors-emoji.png" alt=""></button>
+
+    <br><br>
+    
+    <p id="resultPara"></p>
+
+    <br>
+
+    <p id="scorePara"></p>
+
+    <button id="resetButton" onclick="
+    score.wins = 0;
+    score.losses = 0;
+    score.draws = 0;
+    let scoreLine = document.getElementById('scorePara');
+    scoreLine.innerText = `Game was Reset!\nWins:${score.wins}, Loses:${score.losses}, Draws:${score.draws}`;
+    ">Reset Score</button>
+
+    <script src="gameScript.js"></script>
+</body>
+</html>
