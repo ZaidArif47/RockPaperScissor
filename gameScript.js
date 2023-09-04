@@ -78,7 +78,13 @@
 
             
             let scoreLine = document.getElementById('scorePara');
-            scoreLine.innerText = `Wins:${score.wins}, Loses:${score.losses}, Draws:${score.draws}`;
+            //scoreLine.innerText = `Wins:${score.wins}, Loses:${score.losses}, Draws:${score.draws}`;
+            resultLine.innerHTML =
+            `<p>You ${result}</p>
+            <p>
+            You played <img src="img/${userMove}-emoji.png" alt="">
+            Computer Played <img src="img/${compMove}-emoji.png" alt="">
+            </p>`;
         
             console.log(result)
             console.log(resultLine)
