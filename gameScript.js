@@ -74,17 +74,17 @@
             
 
             let resultLine = document.getElementById('resultPara');
-            resultLine.innerText = `You ${result}\n\nYour Move:${userMove} | Comp Move:${compMove}`;
-
-            
-            let scoreLine = document.getElementById('scorePara');
-            //scoreLine.innerText = `Wins:${score.wins}, Loses:${score.losses}, Draws:${score.draws}`;
+            //resultLine.innerText = `You ${result}\n\nYour Move:${userMove} | Comp Move:${compMove}`;
             resultLine.innerHTML =
             `<p>You ${result}</p>
             <p>
             You played <img src="img/${userMove}-emoji.png" alt="">
             Computer Played <img src="img/${compMove}-emoji.png" alt="">
             </p>`;
+
+            
+            let scoreLine = document.getElementById('scorePara');
+            scoreLine.innerText = `Wins:${score.wins}, Loses:${score.losses}, Draws:${score.draws}`;
         
             console.log(result)
             console.log(resultLine)
