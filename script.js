@@ -74,7 +74,12 @@
 
 
             let resultLine = document.getElementById('resultPara');
-            resultLine.innerText = `You ${result}\nYour Move:${userMove} | Comp Move:${compMove}`;
+            resultLine.innerHTML = 
+            `<p>You ${result}</p>
+            <p>
+            You played <img src="img/${userMove}-emoji.png" alt=""> 
+            Computer Played <img src="img/${compMove}-emoji.png" alt="">
+            </p>`;
 
 
             let scoreLine = document.getElementById('scorePara');
